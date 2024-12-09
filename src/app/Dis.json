@@ -1,0 +1,82 @@
+[
+    {
+        "id": "1",
+        "name": "Distributor 1",
+        "address": "Address 1",
+        "phone": "1234567890",
+        "email": "distributor1@gmail.com",
+        "total": 10
+    },
+    {
+        "id": "2",
+        "name": "Distributor 2",
+        "address": "Address 2",
+        "phone": "2345678901",
+        "email": "distributor1@gmail.com",
+        "total": 20
+    },
+    {
+        "id": "3",
+        "name": "Distributor 3",
+        "address": "Address 3",
+        "phone": "3456789012",
+        "email": "distributor1@gmail.com",
+        "total": 30
+    },
+    {
+        "id": "4",
+        "name": "Distributor 4",
+        "address": "Address 4",
+        "phone": "4567890123",
+        "email": "distributor4@gmail.com",
+        "total": 40
+    },
+    {
+        "id": "5",
+        "name": "Distributor 5",
+        "address": "Address 5",
+        "phone": "5678901234",
+        "email": "distributor5@gmail.com",
+        "total": 50
+    },
+    {
+        "id": "6",
+        "name": "Distributor 6",
+        "address": "Address 6",
+        "phone": "6789012345",
+        "email": "distributor6@gmail.com",
+        "total": 60
+    },
+    {
+        "id": "7",
+        "name": "Distributor 7",
+        "address": "Address 7",
+        "phone": "7890123456",
+        "email": "distributor7@gmail.com",
+        "total": 70
+    },
+    {
+        "id": "8",
+        "name": "Distributor 8",
+        "address": "Address 8",
+        "phone": "8901234567",
+        "email": "distributor8@gmail.com",
+        "total": 80
+    },
+    {
+        "id": "9",
+        "name": "Distributor 9",
+        "address": "Address 9",
+        "phone": "9012345678",
+        "email": "distributor9@gmail.com",
+        "total": 90
+    },
+    {
+        "id": "10",
+        "name": "Distributor 10",
+        "address": "Address 10",
+        "phone": "0123456789",
+        "email": "distributor10@gmail.com",
+        "total": 100
+    }
+]

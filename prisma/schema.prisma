@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Categories {
+  category_id   Int       @id @default(autoincrement())
+  category_name String    @db.VarChar(255)
+  Products      Products[]
+}
+
+
+model Orders {
+  order_id      Int            @id @default(autoincrement())
+  supplier_id   Int
+  product_id    Int
+  quantity      Int
+  order_date    DateTime?      @default(now()) @db.DateTime(0)
+  delivery_time Int?
+  status        Orders_status? @default(pending)
+  Suppliers     Suppliers      @relation(fields: [supplier_id], references: [supplier_id], onDelete: Cascade, onUpdate: Restrict, map: "Orders_ibfk_1")
+  Products      Products       @relation(fields: [product_id], references: [product_id], onDelete: Cascade, onUpdate: Restrict, map: "Orders_ibfk_2")
+
+  @@index([product_id], map: "product_id")
+  @@index([supplier_id], map: "supplier_id")
+}
+
+model Products {
+  product_id   Int              @id @default(autoincrement())
+  product_name String           @db.VarChar(255)
+  category_id  Int
+  supplier_id  Int              // New field for supplier ID
+  price        Int          
+  position     String           @db.VarChar(225)            
+  Orders       Orders[]
+  Categories   Categories       @relation(fields: [category_id], references: [category_id], onDelete: Cascade, onUpdate: Restrict, map: "Products_ibfk_1")
+  Suppliers    Suppliers        @relation(fields: [supplier_id], references: [supplier_id], onDelete: Cascade, onUpdate: Restrict, map: "Products_ibfk_2") // New relationship
+  Stock        Stock[]
+
+  @@index([category_id], map: "category_id")
+  @@index([supplier_id], map: "supplier_id") // New index for supplier_id
+}
+
+
+model Stock {
+  stock_id        Int      @id @default(autoincrement())
+  product_id      Int      @unique
+  quantity        Int?     @default(0)
+  low_stock_level Int?     @default(10)
+  Products        Products @relation(fields: [product_id], references: [product_id], onDelete: Cascade, onUpdate: Restrict, map: "Stock_ibfk_1")
+
+  @@index([product_id], map: "product_id")
+}
+
+model Suppliers {
+  supplier_id    Int      @id @default(autoincrement())
+  company_name   String   @db.VarChar(255)
+  address        String?  @db.Text
+  contact_number String?  @db.VarChar(20)
+  contact_email  String?  @db.VarChar(255)
+  Orders         Orders[]
+
+  Products Products[] @relation(map: "Products_ibfk_2")
+}
+
+
+enum Orders_status {
+  pending
+  completed
+  cancelled
+}
